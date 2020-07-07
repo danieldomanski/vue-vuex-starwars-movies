@@ -1,15 +1,30 @@
 "use strict";
 const webpack = require("webpack");
+require("@babel/polyfill");
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   mode: "development",
-
-  entry: ["./src/app.js"],
+  entry: ["@babel/polyfill", "./src/app.js"],
   devServer: {
     hot: true,
     watchOptions: {
       poll: true,
+    },
+    stats: {
+      assets: false,
+      children: false,
+      chunks: false,
+      hash: false,
+      modules: false,
+      publicPath: false,
+      timings: false,
+      version: false,
+      warnings: true,
+      colors: {
+        green: "\u001b[32m",
+      },
     },
   },
   module: {
