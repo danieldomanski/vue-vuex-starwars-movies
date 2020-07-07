@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^9.8.4",
+    "tailwindcss": "^1.4.6",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
     "webpack": "^4.43.0",
