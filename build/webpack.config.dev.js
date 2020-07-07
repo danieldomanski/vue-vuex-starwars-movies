@@ -12,6 +12,8 @@ module.exports = {
     watchOptions: {
       poll: true,
     },
+    historyApiFallback: true, // is it enabled ?
+    inline: true,
     stats: {
       assets: false,
       children: false,

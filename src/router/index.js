@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../pages/Home.vue";
+import Movie from "../pages/Movie.vue";
+import NotFound from "../pages/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +13,11 @@ const routes = [
     component: Home,
   },
   {
+    path: "/movies/:id",
+    name: "Movie",
+    component: Movie,
+  },
+  {
     path: "/about",
     name: "About",
     // route level code-splitting
@@ -19,6 +26,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../pages/About.vue"),
   },
+  { path: "*", component: NotFound },
 ];
 
 const router = new VueRouter({

@@ -1,26 +1,16 @@
 <template>
-  <div>
-    <div :key="movie.url" class="card" v-for="movie in movies">
-      <div class="content">
-        <div class="header">{{ movie.title }}</div>
-      </div>
-    </div>
-  </div>
+  <section>
+    <h2 class="text-xl">Star wars movie list</h2>
+    <MoviesList />
+  </section>
 </template>
 <script>
-import HelloWorld from "../components/HelloWorld.vue";
+import MoviesList from "../components/MoviesList.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
-    HelloWorld,
-  },
-  computed: mapGetters({
-    movies: "allMovies",
-  }),
-  methods: mapActions(["loadMovies"]),
-  created() {
-    this.$store.dispatch("loadMovies");
+    MoviesList,
   },
 };
 </script>
