@@ -3,7 +3,7 @@
     <h1 class="text-4xl font-bold text-center">Reviews</h1>
     <ul v-if="reviews.length !== 0" class="mt-8">
       <Box
-        class="mt-6 hover:shadow-lg cursor-pointer"
+        class="mt-6 hover:shadow-lg"
         :key="review.url"
         v-for="review in reviews"
       >

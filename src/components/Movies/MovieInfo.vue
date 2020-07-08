@@ -5,7 +5,7 @@
         class="flex flex-col-reverse md:flex-row items-center justify-between"
       >
         <h1 class="text-3xl font-bold">{{ currentMovie.title }}</h1>
-        <p class="sm:text-lg">{{ currentMovie.release_date }}</p>
+        <p class="sm:text-lg">{{ currentMovie.date_string }}</p>
       </div>
 
       <p class="text-gray-600 mt-2">directed by {{ currentMovie.director }}</p>

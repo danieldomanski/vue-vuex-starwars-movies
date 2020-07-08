@@ -3,19 +3,29 @@
     <form
       class="w-full flex flex-col"
       @submit="submitForm"
-      :class="isOpened ? 'fadeHeight-enter-active fadeHeight-leave-active mt-8' : 'fadeHeight-enter fadeHeight-leave-to'"
+      :class="
+        isOpened
+          ? 'fadeHeight-enter-active fadeHeight-leave-active mt-8'
+          : 'fadeHeight-enter fadeHeight-leave-to'
+      "
     >
-      <label class="text-gray-600 font-bold uppercase text-xs mb-1">Your name</label>
+      <label class="text-gray-600 font-bold uppercase text-xs mb-1"
+        >Your name</label
+      >
       <input
         v-model="name"
         class="mb-4 h-12 bg-transparent border border-solid active:bg-white pl-4 focus:shadow"
       />
-      <label class="text-gray-600 font-bold uppercase text-xs mb-1">Topic</label>
+      <label class="text-gray-600 font-bold uppercase text-xs mb-1"
+        >Topic</label
+      >
       <input
         v-model="topic"
         class="mb-4 h-12 bg-transparent border border-solid active:bg-white pl-4"
       />
-      <label class="text-gray-600 font-bold uppercase text-xs mb-1">Contents</label>
+      <label class="text-gray-600 font-bold uppercase text-xs mb-1"
+        >Contents</label
+      >
       <textarea
         v-model="message"
         class="mb-4 bg-transparent border border-solid active:bg-white pl-4 pt-3"
@@ -24,13 +34,15 @@
         class="w-full flex items-center"
         :class="!isFormValid ? 'justify-between' : 'justify-end'"
       >
-        <p
-          class="text-red-500"
-          v-show="!isFormValid"
-        >We couldn't send your revies. Form is not valid. Take your time to fill fields carefully.</p>
+        <p class="text-red-500" v-show="!isFormValid">
+          We couldn't send your reviews. The form is not valid. Take your time
+          to fill fields carefully.
+        </p>
         <button
           class="self-end bg-indigo-500 text-white py-2 px-6 font-bold uppercase mt-6 hover:bg-indigo-400 transition duration-200 ease-in-out"
-        >Send</button>
+        >
+          Send
+        </button>
       </div>
     </form>
   </transition>
@@ -43,7 +55,7 @@ export default {
   props: ["isOpened", "toggleForm", "movie"],
   data: function() {
     return {
-      isFormValid: true
+      isFormValid: true,
     };
   },
   computed: {
@@ -53,7 +65,7 @@ export default {
       },
       set(value) {
         return this.$store.commit(types.UPDATE_NAME, value);
-      }
+      },
     },
     topic: {
       get() {
@@ -61,7 +73,7 @@ export default {
       },
       set(value) {
         return this.$store.commit(types.UPDATE_TOPIC, value);
-      }
+      },
     },
     message: {
       get() {
@@ -69,8 +81,8 @@ export default {
       },
       set(value) {
         return this.$store.commit(types.UPDATE_MESSAGE, value);
-      }
-    }
+      },
+    },
   },
   methods: {
     submitForm: function(e) {
@@ -93,7 +105,7 @@ export default {
       const { name, topic, message } = this;
 
       if (name && topic && message) {
-        return [name, topic, message].every(v => v !== "");
+        return [name, topic, message].every((v) => v !== "");
       }
 
       return false;
@@ -102,9 +114,8 @@ export default {
       this.isFormValid = value;
     },
     ...mapActions(["addReview"]),
-    ...mapMutations({ resetInput: types.RESET_REVIEW_INPUT })
-  }
+    ...mapMutations({ resetInput: types.RESET_REVIEW_INPUT }),
+  },
 };
 </script>
-<style>
-</style>
+<style></style>

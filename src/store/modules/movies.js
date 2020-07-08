@@ -25,7 +25,7 @@ const formatDate = (movie) => {
 const extendMovie = (movie) => ({
   ...movie,
   id: getMovieId(movie),
-  release_date: formatDate(movie),
+  date_string: formatDate(movie),
 });
 
 // getters

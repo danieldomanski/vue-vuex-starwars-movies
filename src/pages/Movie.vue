@@ -8,7 +8,7 @@
     <MovieReviews :movieReviews="movieReviews" />
     <Box class="flex flex-col justify-center items-center mt-8">
       <div
-        class="w-full flex justify-between items-center cursor-pointer px-2"
+        class="w-full flex justify-between items-center cursor-pointer pr-2"
         @click="toggleReviewForm"
       >
         <div class>

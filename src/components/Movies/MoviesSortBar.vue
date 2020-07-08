@@ -50,6 +50,8 @@
           :class="direction === 'asc' ? 'rotate-180' : 'rotate-0'"
         />
       </div>
+
+      </div>
     </div>
   </div>
 </template>
@@ -57,8 +59,8 @@
 import Icon from "../Common/Icon.vue";
 export default {
   components: {
-    Icon
+    Icon,
   },
-  props: ["filter", "direction", "setFilter"]
+  props: ["filter", "direction", "setFilter"],
 };
 </script>

@@ -10,14 +10,20 @@
 import Header from "./components/Header.vue";
 export default {
   components: {
-    Header
-  }
+    Header,
+  },
 };
 </script>
 <style>
 body {
   background: #f7fafc;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 p {
   word-break: break-word;
 }
