@@ -10,7 +10,12 @@
 import Header from "./components/Header.vue";
 export default {
   components: {
-    Header,
-  },
+    Header
+  }
 };
 </script>
+<style>
+body {
+  background: #f7fafc;
+}
+</style>
