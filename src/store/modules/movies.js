@@ -50,7 +50,7 @@ const actions = {
       setTimeout(() => {
         commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
       }, 750);
-    } catch {
+    } catch (e) {
       commit(types.FETCHED_MOVIES_ERROR, { hasError: true });
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
     }
@@ -81,7 +81,7 @@ const actions = {
       setTimeout(() => {
         commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
       }, 750);
-    } catch {
+    } catch (e) {
       commit(types.FETCHED_MOVIES_ERROR, { hasError: true });
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
     }

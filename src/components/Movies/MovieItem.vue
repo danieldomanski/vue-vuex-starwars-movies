@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'Movie', params: { id: index } }">
     <Box class="hover:shadow-lg mt-4">
-      <div class="flex justify-between">
+      <div class="flex items-center justify-between">
         <p class="text-sm text-gray-600">{{ movie.director }}</p>
         <p>{{ movie.release_date }}</p>
       </div>
@@ -10,7 +10,7 @@
   </router-link>
 </template>
 <script>
-import Box from "./Box.vue";
+import Box from "../Common/Box.vue";
 export default {
   components: {
     Box

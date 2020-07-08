@@ -1,0 +1,9 @@
+diff a/src/store/modules/reviews.js b/src/store/modules/reviews.js	(rejected hunks)
+@@ -48,7 +48,6 @@ const mutations = {
+     state.reviews = state.reviews.concat(review);
+   },
+   [types.RESET_REVIEW_INPUT](state) {
+-    console.log("rrr");
+     state.reviewInput = { ...defaultReviewInput };
+   },
+ };

@@ -5,33 +5,33 @@
 
   <div class v-else>
     <Box>
-      <div class="flex items-center justify-between">
+      <div class="flex flex-col-reverse md:flex-row items-center justify-between">
         <h1 class="text-3xl font-bold">{{ currentMovie.title }}</h1>
-        <p class="text-lg">{{ formattedDate }}</p>
+        <p class="sm:text-lg">{{ formattedDate }}</p>
       </div>
 
       <p class="text-gray-600 mt-2">directed by {{ currentMovie.director }}</p>
       <p class="text-gray-600 mb-8">produced by {{ currentMovie.producer }}</p>
-      <p class="text-lg">{{ currentMovie.opening_crawl }}</p>
+      <p class="md:text-lg">{{ currentMovie.opening_crawl }}</p>
     </Box>
 
-    <Box class="flex justify-around mt-8">
+    <Box class="flex flex-col sm:flex-row justify-around mt-8">
       <div class="flex flex-col items-center text-lg text-purple-700">
         <Icon icon="user" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Characters</h3>
         <p class="font-bold">{{ currentMovie.characters.length }}</p>
       </div>
-      <div class="flex flex-col items-center text-lg text-purple-700">
+      <div class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0">
         <Icon icon="globe" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Planets</h3>
         <p class="font-bold">{{ currentMovie.planets.length }}</p>
       </div>
-      <div class="flex flex-col items-center text-lg text-purple-700">
+      <div class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0">
         <Icon icon="users" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Species</h3>
         <p class="font-bold">{{ currentMovie.species.length }}</p>
       </div>
-      <div class="flex flex-col items-center text-purple-700">
+      <div class="flex flex-col items-center text-purple-700 mt-6 sm:mt-0">
         <Icon icon="star" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3 text-lg">Starships</h3>
         <p class="font-bold text-lg">{{ currentMovie.starships.length }}</p>
@@ -40,7 +40,7 @@
     <section class="mt-8">
       <Box
         v-if="movieReviews.length === 0"
-        class="flex flex-col justify-center items-center text-lg"
+        class="flex flex-col justify-center items-center md:text-lg text-center"
       >
         <p class="text-gray-600">This film has no reviews yet.</p>
         <p class="font-bold text-gray-600">Don't be shy. Always be the bravest!</p>
@@ -58,7 +58,7 @@
 
     <Box class="flex flex-col justify-center items-center mt-8">
       <div
-        class="w-full flex justify-between items-center cursor-pointer"
+        class="w-full flex justify-between items-center cursor-pointer px-2"
         @click="toggleReviewForm"
       >
         <div class>
@@ -83,10 +83,10 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { TrinityRingsSpinner } from "epic-spinners";
-import Icon from "../components/Icon.vue";
-import ReviewForm from "../components/ReviewForm.vue";
-import ReviewItem from "../components/ReviewItem.vue";
-import Box from "../components/Box.vue";
+import Icon from "../components/Common/Icon.vue";
+import ReviewForm from "../components/Reviews/ReviewForm.vue";
+import ReviewItem from "../components/Reviews/ReviewItem.vue";
+import Box from "../components/Common/Box.vue";
 
 export default {
   data: function() {

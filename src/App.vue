@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen pb-16" id="app">
     <Header />
-    <main class="max-w-5xl mx-auto py-8">
+    <main class="max-w-5xl mx-auto py-8 px-4 lg:px-0">
       <router-view />
     </main>
   </div>
@@ -17,5 +17,8 @@ export default {
 <style>
 body {
   background: #f7fafc;
+}
+p {
+  word-break: break-word;
 }
 </style>
