@@ -3,6 +3,7 @@ const webpack = require("webpack");
 require("@babel/polyfill");
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -84,6 +85,14 @@ module.exports = {
       filename: "index.html",
       template: "index.html",
       inject: true,
+    }),
+    new SWPrecacheWebpackPlugin({
+      cacheId: "Starwapi",
+      filename: "service-worker-cache.js",
+      staticFileGlobs: ["dist/**/*.{js,css}", "/"],
+      minify: true,
+      stripPrefix: "dist/",
+      dontCacheBustUrlsMatching: /\.\w{6}\./,
     }),
   ],
 };
