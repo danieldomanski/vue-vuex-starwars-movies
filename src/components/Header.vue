@@ -1,13 +1,26 @@
 <template>
   <header class="flex justify-between bg-indigo-500 p-8 shadow-lg">
-    <h1 class="font-bold uppercase text-xl text-white">Star wars Movies</h1>
+    <router-link to="/" class="flex items-center text-indigo-100">
+      <h1 class="font-bold uppercase text-xl text-white mr-2">
+        Star wars Movies
+      </h1>
+      <Icon icon="film" size="medium"></Icon>
+    </router-link>
+
     <div id="nav">
-      <router-link to="/" class="font-bold text-white mr-6">Home</router-link>
-      <router-link to="/about" class="font-bold text-white">About</router-link>
+      <router-link to="/about" class="font-bold text-white uppercase"
+        >My reviews</router-link
+      >
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+import Icon from "./Icon.vue";
+
+export default {
+  components: {
+    Icon,
+  },
+};
 </script>
