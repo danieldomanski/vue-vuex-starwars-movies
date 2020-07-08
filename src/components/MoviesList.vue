@@ -17,8 +17,10 @@
           <p class="mr-1">title</p>
           <Icon
             v-show="filter === 'title'"
-            :icon="direction === 'asc' ? 'chevron-down' : 'chevron-up'"
+            icon="chevron-down"
             size="small"
+            class="transform transition duration-200 ease-in-out"
+            :class="direction === 'asc' ? 'rotate-180' : 'rotate-0'"
           />
         </div>
         <div
@@ -29,8 +31,10 @@
           <p class="mr-1">director</p>
           <Icon
             v-show="filter === 'director'"
-            :icon="direction === 'asc' ? 'chevron-down' : 'chevron-up'"
+            icon="chevron-down"
             size="small"
+            class="transform transition duration-200 ease-in-out"
+            :class="direction === 'asc' ? 'rotate-180' : 'rotate-0'"
           />
         </div>
         <div
@@ -41,8 +45,10 @@
           <p class="mr-1">released</p>
           <Icon
             v-show="filter === 'release_date'"
-            :icon="direction === 'asc' ? 'chevron-down' : 'chevron-up'"
+            icon="chevron-down"
             size="small"
+            class="transform transition duration-200 ease-in-out"
+            :class="direction === 'asc' ? 'rotate-180' : 'rotate-0'"
           />
         </div>
       </div>
@@ -58,8 +64,10 @@
       :key="movie.url"
       :index="movie.id"
     />
-    <div v-else class="flex flex-col items-center bg-white shadow p-8 text-lg text-gray-600">
-      <p>We couldn't find any movies :(</p>
+    <div v-else>
+      <Box class="flex justify-center text-lg text-gray-600">
+        <p>We couldn't find any movies :(</p>
+      </Box>
     </div>
   </div>
 </template>
@@ -67,6 +75,7 @@
 <script>
 import MovieItem from "./MovieItem.vue";
 import Icon from "./Icon.vue";
+import Box from "./Box.vue";
 import { TrinityRingsSpinner } from "epic-spinners";
 import { mapActions, mapGetters } from "vuex";
 
@@ -74,7 +83,8 @@ export default {
   components: {
     MovieItem,
     Icon,
-    TrinityRingsSpinner
+    TrinityRingsSpinner,
+    Box
   },
   data: function() {
     return {

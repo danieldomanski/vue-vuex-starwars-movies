@@ -4,7 +4,7 @@
   </div>
 
   <div class v-else>
-    <div class="bg-white shadow w-full p-8">
+    <Box>
       <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold">{{ currentMovie.title }}</h1>
         <p class="text-lg">{{ formattedDate }}</p>
@@ -13,9 +13,9 @@
       <p class="text-gray-600 mt-2">directed by {{ currentMovie.director }}</p>
       <p class="text-gray-600 mb-8">produced by {{ currentMovie.producer }}</p>
       <p class="text-lg">{{ currentMovie.opening_crawl }}</p>
-    </div>
+    </Box>
 
-    <div class="flex justify-around bg-white shadow w-full p-8 mt-8">
+    <Box class="flex justify-around mt-8">
       <div class="flex flex-col items-center text-lg text-purple-700">
         <Icon icon="user" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Characters</h3>
@@ -36,16 +36,16 @@
         <h3 class="uppercase text-gray-700 mt-2 mb-3 text-lg">Starships</h3>
         <p class="font-bold text-lg">{{ currentMovie.starships.length }}</p>
       </div>
-    </div>
+    </Box>
     <section class="mt-8">
-      <div
+      <Box
         v-if="movieReviews.length === 0"
-        class="flex flex-col justify-center items-center bg-white shadow p-8 text-lg"
+        class="flex flex-col justify-center items-center text-lg"
       >
         <p class="text-gray-600">This film has no reviews yet.</p>
         <p class="font-bold text-gray-600">Don't be shy. Always be the bravest!</p>
-      </div>
-      <div v-else class="bg-white p-8 shadow">
+      </Box>
+      <Box v-else class="bg-white p-8 shadow">
         <h3 class="text-2xl font-bold uppercase mb-8">Reviews</h3>
         <ReviewItem
           :key="review.url"
@@ -53,10 +53,10 @@
           :review="review"
           :withBorder="index !== movieReviews.length - 1"
         />
-      </div>
+      </Box>
     </section>
 
-    <section class="flex flex-col justify-center items-center bg-white p-8 shadow mt-16">
+    <Box class="flex flex-col justify-center items-center mt-8">
       <div
         class="w-full flex justify-between items-center cursor-pointer"
         @click="toggleReviewForm"
@@ -65,14 +65,19 @@
           <h3 class="text-xl font-bold uppercase">Add review</h3>
           <p class>Tell others how did you like the movie</p>
         </div>
-        <Icon :icon="isReviewFormOpened ? 'chevron-up' : 'chevron-down'" size="large" />
+        <Icon
+          icon="chevron-down"
+          size="large"
+          class="transform transition duration-300 ease-in-out"
+          :class="isReviewFormOpened ? 'rotate-180' : 'rotate-0'"
+        />
       </div>
       <transition name="fadeHeight">
         <div class="w-full">
           <ReviewForm :isOpened="isReviewFormOpened" :toggleForm="toggleReviewForm" />
         </div>
       </transition>
-    </section>
+    </Box>
   </div>
 </template>
 <script>
@@ -81,6 +86,7 @@ import { TrinityRingsSpinner } from "epic-spinners";
 import Icon from "../components/Icon.vue";
 import ReviewForm from "../components/ReviewForm.vue";
 import ReviewItem from "../components/ReviewItem.vue";
+import Box from "../components/Box.vue";
 
 export default {
   data: function() {
@@ -92,7 +98,8 @@ export default {
     TrinityRingsSpinner,
     Icon,
     ReviewForm,
-    ReviewItem
+    ReviewItem,
+    Box
   },
   computed: {
     formattedDate: function() {

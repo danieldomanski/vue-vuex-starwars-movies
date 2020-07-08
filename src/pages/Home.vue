@@ -1,7 +1,11 @@
 <template>
   <section>
     <div class="w-full flex items-center my-8">
-      <input class="shadow h-16 pl-6 flex-1" placeholder="Search for a movie" v-model="searchInput" />
+      <input
+        class="shadow focus:shadow-lg h-16 pl-6 flex-1"
+        placeholder="Search for a movie"
+        v-model="searchInput"
+      />
       <button
         class="flex items-center bg-indigo-500 ml-4 text-white h-16 px-6 font-bold uppercase hover:bg-indigo-400 transition duration-200 ease-in-out"
         @click="searchFilms"

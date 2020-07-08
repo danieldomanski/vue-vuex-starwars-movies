@@ -1,8 +1,12 @@
 <template>
   <div class="about">
     <h1 class="text-4xl font-bold text-center">Reviews</h1>
-    <div v-if="reviews.length !== 0">
-      <div class="bg-white shadow p-8 mt-8" :key="review.url" v-for="(review) in reviews">
+    <ul v-if="reviews.length !== 0" class="mt-8">
+      <Box
+        class="mt-6 hover:shadow-lg cursor-pointer"
+        :key="review.url"
+        v-for="(review) in reviews"
+      >
         <div class="flex justify-between mb-4">
           <h2 class="font-bold text-2xl text-indigo-600">{{ allMovies[review.movie_id].title }}</h2>
           <router-link :to="`/movies/${review.movie_id}`">
@@ -13,26 +17,28 @@
         </div>
 
         <ReviewItem :review="review" />
-      </div>
-    </div>
+      </Box>
+    </ul>
     <div v-else>
-      <div class="flex flex-col items-center justify-center bg-white shadow p-8 mt-8">
+      <Box class="flex flex-col items-center justify-center bg-white shadow p-8 mt-8">
         <p class="text-gray-600">You haven't written any reviews yet!</p>
         <router-link
           to="/"
           class="font-bold text-indigo-600 uppercase mt-4"
         >Browse movies we prepared for you</router-link>
-      </div>
+      </Box>
     </div>
   </div>
 </template>
 <script>
 import ReviewItem from "../components/ReviewItem.vue";
+import Box from "../components/Box.vue";
 import { mapGetters } from "vuex";
 
 export default {
   components: {
-    ReviewItem
+    ReviewItem,
+    Box
   },
   computed: {
     ...mapGetters(["reviews", "allMovies"])

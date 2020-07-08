@@ -8,7 +8,7 @@
       <label class="text-gray-600 font-bold uppercase text-xs mb-1">Your name</label>
       <input
         v-model="name"
-        class="mb-4 h-12 bg-transparent border border-solid active:bg-white pl-4"
+        class="mb-4 h-12 bg-transparent border border-solid active:bg-white pl-4 focus:shadow"
       />
       <label class="text-gray-600 font-bold uppercase text-xs mb-1">Topic</label>
       <input
