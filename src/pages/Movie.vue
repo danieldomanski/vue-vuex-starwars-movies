@@ -69,7 +69,7 @@
       </div>
       <transition name="fadeHeight">
         <div class="w-full">
-          <ReviewForm :isOpened="isReviewFormOpened" />
+          <ReviewForm :isOpened="isReviewFormOpened" :toggleForm="toggleReviewForm" />
         </div>
       </transition>
     </section>

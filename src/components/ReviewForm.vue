@@ -40,7 +40,7 @@ import { mapActions, mapMutations, mapGetters } from "vuex";
 import * as types from "../store/mutation-types";
 
 export default {
-  props: ["isOpened"],
+  props: ["isOpened", "toggleForm"],
   data: function() {
     return {
       isFormValid: true
@@ -86,6 +86,8 @@ export default {
 
       // handle submitting
       this.addReview(this.$route.params.id);
+      this.resetInput();
+      this.toggleForm();
     },
     isFormValidated: function() {
       const { name, topic, message } = this;
@@ -99,7 +101,8 @@ export default {
     setIsFormValid: function(value) {
       this.isFormValid = value;
     },
-    ...mapActions(["addReview"])
+    ...mapActions(["addReview"]),
+    ...mapMutations({ resetInput: types.RESET_REVIEW_INPUT })
   }
 };
 </script>

@@ -1,13 +1,15 @@
 import * as types from "../mutation-types";
 
+const defaultReviewInput = {
+  name: "",
+  topic: "",
+  message: "",
+};
+
 // initial state
 const state = {
   reviews: [],
-  reviewInput: {
-    name: "",
-    topic: "",
-    message: "",
-  },
+  reviewInput: { ...defaultReviewInput },
 };
 
 // getters
@@ -34,7 +36,6 @@ const actions = {
 // mutations
 const mutations = {
   [types.UPDATE_NAME](state, name) {
-    console.log({ state, name });
     state.reviewInput.name = name;
   },
   [types.UPDATE_TOPIC](state, topic) {
@@ -45,6 +46,9 @@ const mutations = {
   },
   [types.SET_REVIEWS](state, { review }) {
     state.reviews = state.reviews.concat(review);
+  },
+  [types.RESET_REVIEW_INPUT](state) {
+    state.reviewInput = { ...defaultReviewInput };
   },
 };
 

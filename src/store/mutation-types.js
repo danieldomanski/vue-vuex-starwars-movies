@@ -9,3 +9,4 @@ export const UPDATE_NAME = "UPDATE_NAME";
 export const UPDATE_TOPIC = "UPDATE_TOPIC";
 export const UPDATE_MESSAGE = "UPDATE_MESSAGE";
 export const SET_REVIEWS = "SET_REVIEWS";
+export const RESET_REVIEW_INPUT = "RESET_REVIEW_INPUT";
