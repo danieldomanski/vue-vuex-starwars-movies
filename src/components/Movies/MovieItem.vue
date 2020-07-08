@@ -32,7 +32,7 @@ export default {
   methods: {
     formattedReviewsStr: function() {
       const reviewsCount = this.movieReviewsCount;
-      console.log({ reviewsCount });
+
       return reviewsCount > 1
         ? `${reviewsCount} reviews`
         : `${reviewsCount} review`;
