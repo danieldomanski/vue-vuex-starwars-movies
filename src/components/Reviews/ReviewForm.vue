@@ -40,7 +40,7 @@ import { mapActions, mapMutations, mapGetters } from "vuex";
 import * as types from "../../store/mutation-types";
 
 export default {
-  props: ["isOpened", "toggleForm"],
+  props: ["isOpened", "toggleForm", "movie"],
   data: function() {
     return {
       isFormValid: true
@@ -85,7 +85,7 @@ export default {
       this.setIsFormValid(true);
 
       // handle submitting
-      this.addReview(this.$route.params.id);
+      this.addReview(this.movie);
       this.resetInput();
       this.toggleForm();
     },

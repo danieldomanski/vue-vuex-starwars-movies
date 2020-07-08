@@ -74,7 +74,11 @@
       </div>
       <transition name="fadeHeight">
         <div class="w-full">
-          <ReviewForm :isOpened="isReviewFormOpened" :toggleForm="toggleReviewForm" />
+          <ReviewForm
+            :movie="currentMovie"
+            :isOpened="isReviewFormOpened"
+            :toggleForm="toggleReviewForm"
+          />
         </div>
       </transition>
     </Box>
@@ -125,7 +129,9 @@ export default {
     ...mapActions(["loadMovie"])
   },
   created() {
-    this.$store.dispatch("loadMovie", this.$route.params.id);
+    if (this.currentMovie.id !== this.$route.params.id) {
+      this.$store.dispatch("loadMovie", this.$route.params.id);
+    }
   }
 };
 </script>

@@ -22,11 +22,13 @@ const getters = {
 
 // actions
 const actions = {
-  addReview({ commit, state }, id) {
+  addReview({ commit, state }, movie) {
+    console.log({ movie });
     commit(types.SET_REVIEWS, {
       review: {
         ...state.reviewInput,
-        movie_id: id,
+        movie_id: movie.id,
+        movie_title: movie.title,
         created_date: new Date().toLocaleDateString(),
       },
     });

@@ -8,7 +8,7 @@
         v-for="(review) in reviews"
       >
         <div class="flex flex-col-reverse sm:flex-row justify-between mb-4">
-          <h2 class="font-bold text-2xl text-indigo-600">{{ getReviewedMovie(review).title }}</h2>
+          <h2 class="font-bold text-2xl text-indigo-600">{{ review.movie_title }}</h2>
           <router-link :to="`/movies/${review.movie_id}`">
             <button
               class="transition duration-200 ease-in-out border border-solid border-indigo-500 text-indigo-500 sm:ml-4 mb-4 sm:mb-0 text-white py-2 px-6 font-bold uppercase hover:bg-indigo-500 hover:text-white text-sm"

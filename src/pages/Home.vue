@@ -1,10 +1,11 @@
 <template>
   <section>
-    <label class="mt-8 text-gray-600 font-bold uppercase text-xs">Search for a movie</label>
+    <label class="mt-8 text-gray-600 font-bold uppercase text-xs">Find movies</label>
     <div class="w-full flex flex-col md:flex-row md:items-center mt-2">
       <input
         class="shadow focus:shadow-lg py-4 md:py-0 h-16 pl-4 sm:pl-6 flex-1 transition duration-200 ease-in-out text-sm sm:text-base"
         placeholder="What's the movie title you are looking for?"
+        v-on:keyup.enter="searchFilms"
         v-model="searchInput"
       />
 
@@ -41,6 +42,9 @@ export default {
     searchFilms: function() {
       this.$store.dispatch("searchMovies", this.searchInput);
     }
+  },
+  created: function() {
+    this.searchInput = "";
   }
 };
 </script>
