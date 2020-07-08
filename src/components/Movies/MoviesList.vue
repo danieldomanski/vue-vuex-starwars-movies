@@ -1,6 +1,10 @@
 <template>
   <div class="max-w-5xl">
-    <MoviesSortBar :filter="filter" :direction="direction" :setFilter="setFilter" />
+    <MoviesSortBar
+      :filter="filter"
+      :direction="direction"
+      :setFilter="setFilter"
+    />
     <div v-if="isLoading" class="flex justify-center items-center">
       <Spinner />
     </div>
@@ -33,25 +37,25 @@ export default {
     MoviesSortBar,
     Icon,
     Spinner,
-    Box
+    Box,
   },
   data: function() {
     return {
       filter: "title",
-      direction: "asc"
+      direction: "asc",
     };
   },
   computed: {
     ...mapGetters({
       movies: "allMovies",
-      isLoading: "isLoading"
+      isLoading: "isLoading",
     }),
     sortedMovies: function() {
       const filter = this.filter;
       const sortedMovies = this.getSortedMovies();
 
       return this.direction === "des" ? sortedMovies.reverse() : sortedMovies;
-    }
+    },
   },
   methods: {
     setFilter: function(name) {
@@ -98,12 +102,6 @@ export default {
           break;
       }
     },
-    ...mapActions(["loadMovies"])
   },
-  created() {
-    if (this.movies.length === 0) {
-      this.$store.dispatch("loadMovies");
-    }
-  }
 };
 </script>

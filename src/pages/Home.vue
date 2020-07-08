@@ -1,6 +1,8 @@
 <template>
   <section>
-    <label class="mt-8 text-gray-600 font-bold uppercase text-xs">Find movies</label>
+    <label class="mt-8 text-gray-600 font-bold uppercase text-xs"
+      >Find movies</label
+    >
     <div class="w-full flex flex-col md:flex-row md:items-center mt-2">
       <input
         class="shadow focus:shadow-lg py-4 md:py-0 h-16 pl-4 sm:pl-6 flex-1 transition duration-200 ease-in-out text-sm sm:text-base"
@@ -23,28 +25,37 @@
 <script>
 import MoviesList from "../components/Movies/MoviesList.vue";
 import Icon from "../components/Common/Icon.vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
+import * as types from "../store/mutation-types";
 
 export default {
   data: function() {
     return {
-      searchInput: ""
+      searchInput: "",
     };
   },
   components: {
     MoviesList,
-    Icon
+    Icon,
+  },
+  computed: {
+    ...mapGetters(["allMovies"]),
   },
   actions: {
-    ...mapActions(["searchMovies"])
+    ...mapActions(["searchMovies"]),
   },
   methods: {
+    ...mapMutations({ setIsLoadingMovies: types.FETCHED_MOVIES_PENDING }),
     searchFilms: function() {
       this.$store.dispatch("searchMovies", this.searchInput);
-    }
+    },
   },
   created: function() {
+    // setting isLoading to true before firing up fetch, to prevent 'no movies yet' box from flickering
+    this.setIsLoadingMovies({ isLoading: true });
+    this.$store.dispatch("loadMovies");
+
     this.searchInput = "";
-  }
+  },
 };
 </script>
