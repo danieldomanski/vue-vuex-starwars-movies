@@ -46,7 +46,7 @@ import MovieInfo from "../components/Movies/MovieInfo.vue";
 export default {
   data: function() {
     return {
-      isReviewFormOpened: false
+      isReviewFormOpened: false,
     };
   },
   components: {
@@ -55,36 +55,27 @@ export default {
     ReviewForm,
     MovieReviews,
     MovieInfo,
-    Box
+    Box,
   },
   computed: {
-    formattedDate: function() {
-      const date = new Date(this.currentMovie.release_date);
-
-      return date.toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
-    },
     movieReviews: function() {
       return this.reviews.filter(
-        review => review.movie_id === this.$route.params.id
+        (review) => review.movie_id === this.$route.params.id
       );
     },
-    ...mapGetters(["currentMovie", "isLoading", "hasError", "reviews"])
+    ...mapGetters(["currentMovie", "isLoading", "hasError", "reviews"]),
   },
   methods: {
     toggleReviewForm: function() {
       this.isReviewFormOpened = !this.isReviewFormOpened;
     },
-    ...mapActions(["loadMovie"])
+    ...mapActions(["loadMovie"]),
   },
   created() {
     if (this.currentMovie.id !== this.$route.params.id) {
       this.$store.dispatch("loadMovie", this.$route.params.id);
     }
-  }
+  },
 };
 </script>
 <style>

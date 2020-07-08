@@ -1,9 +1,11 @@
 <template>
   <div>
     <Box>
-      <div class="flex flex-col-reverse md:flex-row items-center justify-between">
+      <div
+        class="flex flex-col-reverse md:flex-row items-center justify-between"
+      >
         <h1 class="text-3xl font-bold">{{ currentMovie.title }}</h1>
-        <p class="sm:text-lg">{{ formattedDate }}</p>
+        <p class="sm:text-lg">{{ currentMovie.release_date }}</p>
       </div>
 
       <p class="text-gray-600 mt-2">directed by {{ currentMovie.director }}</p>
@@ -17,12 +19,16 @@
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Characters</h3>
         <p class="font-bold">{{ currentMovie.characters.length }}</p>
       </div>
-      <div class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0">
+      <div
+        class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0"
+      >
         <Icon icon="globe" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Planets</h3>
         <p class="font-bold">{{ currentMovie.planets.length }}</p>
       </div>
-      <div class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0">
+      <div
+        class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0"
+      >
         <Icon icon="users" size="large" />
         <h3 class="uppercase text-gray-700 mt-2 mb-3">Species</h3>
         <p class="font-bold">{{ currentMovie.species.length }}</p>
@@ -41,8 +47,8 @@ import Icon from "../Common/Icon.vue";
 export default {
   components: {
     Box,
-    Icon
+    Icon,
   },
-  props: ["currentMovie"]
+  props: ["currentMovie"],
 };
 </script>
