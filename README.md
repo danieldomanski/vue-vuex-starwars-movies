@@ -12,6 +12,10 @@
 - Vuex for state managment + async layer
 - Webpack from scratch (without vue-cli), webpack-dev-server
 - Tailwind (css utility kit) for speedy UI building
+- PWA pre-optimized
+
+![PWA pre optimized](https://github.com/danieldomanski/starwars-movies/blob/develop/static/pwa-optimized.PNG?raw=true)
+
 
 ### 🧠 Problems/Future improvements
 - vue router history mode didnt work out to de-uglify routes (urls appear combined with /#/ in the middle). Could be resolved with setting up backend and wildcarding routes with  default index.html.
