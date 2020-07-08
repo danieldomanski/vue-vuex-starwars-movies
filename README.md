@@ -1,5 +1,7 @@
 # vue-vuex-starwars-movies
 
+![App overview](https://github.com/danieldomanski/vue-vuex-starwars-movies/blob/develop/static/app-overview.jpg?raw=true)
+
 ### 💡 Features
 - Star wars movies listing with possibility of: searching and filtering (thanks to https://swapi.dev/)
 - Movie pages for detailed info
