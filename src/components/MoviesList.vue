@@ -51,14 +51,16 @@
       <TrinityRingsSpinner :animation-duration="1000" :size="60" :color="'#667eea'" />
     </div>
     <MovieItem
-      v-else
+      v-else-if="sortedMovies.length !== 0"
       class="card"
       v-for="movie in sortedMovies"
       :movie="movie"
       :key="movie.url"
       :index="movie.id"
     />
-    {{ search }}
+    <div v-else class="flex flex-col items-center bg-white shadow p-8 text-lg text-gray-600">
+      <p>We couldn't find any movies :(</p>
+    </div>
   </div>
 </template>
 
@@ -80,7 +82,6 @@ export default {
       direction: "asc"
     };
   },
-  props: ["search"],
   computed: {
     ...mapGetters({
       movies: "allMovies",

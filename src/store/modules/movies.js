@@ -11,9 +11,21 @@ const state = {
 const getMovieId = (movie) =>
   movie.url.substring(movie.url.lastIndexOf("/") - 1, movie.url.length - 1);
 
-const extendMoviesWithId = (movies) => {
-  return movies.map((movie) => ({ id: getMovieId(movie), ...movie }));
+const formatDate = (movie) => {
+  const date = new Date(movie.release_date);
+
+  return date.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 };
+
+const extendMovie = (movie) => ({
+  ...movie,
+  id: getMovieId(movie),
+  release_date: formatDate(movie),
+});
 
 // getters
 const getters = {
@@ -32,7 +44,7 @@ const actions = {
     try {
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: true });
       const movies = await api.getAllFilms();
-      const extendedMovies = extendMoviesWithId(movies.results);
+      const extendedMovies = movies.results.map(extendMovie);
 
       commit(types.FETCHED_MOVIES, { movies: extendedMovies });
       setTimeout(() => {
@@ -47,9 +59,25 @@ const actions = {
     try {
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: true });
       const movie = await api.getFilmById(id);
-      const extendedMovie = { ...movie, id };
+      const extendedMovie = extendMovie(movie);
 
       commit(types.FETCHED_MOVIE, { currentMovie: extendedMovie });
+      setTimeout(() => {
+        commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
+      }, 750);
+    } catch {
+      commit(types.FETCHED_MOVIES_ERROR, { hasError: true });
+      commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
+    }
+  },
+  async searchMovies({ commit }, title) {
+    try {
+      commit(types.FETCHED_MOVIES_PENDING, { isLoading: true });
+      const movies = await api.searchFilmsByTitle(title);
+
+      const extendedMovies = movies.results.map(extendMovie);
+
+      commit(types.FETCHED_MOVIES, { movies: extendedMovies });
       setTimeout(() => {
         commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
       }, 750);
