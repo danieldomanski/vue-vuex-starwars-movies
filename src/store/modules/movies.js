@@ -40,7 +40,7 @@ const getters = {
 const actions = {
   async loadMovies({ commit }) {
     const movies = await api.getAllFilms();
-    console.log({ movies });
+
     commit(types.FETCHED_MOVIES, { movies: movies.results });
     try {
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: true });
@@ -92,7 +92,6 @@ const actions = {
 // mutations
 const mutations = {
   [types.FETCHED_MOVIES](state, { movies }) {
-    console.log({ movies });
     state.movies = movies;
   },
   [types.FETCHED_MOVIE](state, { currentMovie }) {
