@@ -37,9 +37,11 @@
 </template>
 <script>
 import Box from "../Common/Box.vue";
+import Icon from "../Common/Icon.vue";
 export default {
   components: {
-    Box
+    Box,
+    Icon
   },
   props: ["currentMovie"]
 };

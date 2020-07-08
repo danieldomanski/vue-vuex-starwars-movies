@@ -8,6 +8,7 @@ const state = {
   hasError: false,
 };
 
+// movie helpers
 const getMovieId = (movie) =>
   movie.url.substring(movie.url.lastIndexOf("/") - 1, movie.url.length - 1);
 

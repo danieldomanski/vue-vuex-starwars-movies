@@ -23,7 +23,6 @@ const getters = {
 // actions
 const actions = {
   addReview({ commit, state }, movie) {
-    console.log({ movie });
     commit(types.SET_REVIEWS, {
       review: {
         ...state.reviewInput,
