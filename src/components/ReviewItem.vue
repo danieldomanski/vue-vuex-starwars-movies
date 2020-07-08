@@ -9,6 +9,6 @@
 </template>
 <script>
 export default {
-  props: ["review", "withBorder"]
+  props: ["review", "movie", "withBorder"]
 };
 </script>

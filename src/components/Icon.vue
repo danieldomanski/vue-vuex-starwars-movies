@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <v-icon :name="icon" :class="getClassname" />
-  </div>
+  <v-icon :name="icon" :class="getClassname" />
 </template>
 <script>
 export default {
@@ -18,20 +16,20 @@ export default {
           return "icon--lg";
           break;
       }
-    },
+    }
   },
   props: {
     icon: {
       required: true,
-      type: String,
+      type: String
     },
     size: {
       default: "medium",
       validator: function(value) {
         return ["small", "medium", "large"].indexOf(value) !== -1;
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>
 <style>

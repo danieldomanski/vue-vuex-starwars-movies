@@ -28,7 +28,9 @@
           class="text-red-500"
           v-show="!isFormValid"
         >We couldn't send your revies. Form is not valid. Take your time to fill fields carefully.</p>
-        <button class="self-end bg-indigo-500 text-white py-2 px-6 font-bold uppercase mt-6">Send</button>
+        <button
+          class="self-end bg-indigo-500 text-white py-2 px-6 font-bold uppercase mt-6 hover:bg-indigo-400 transition duration-200 ease-in-out"
+        >Send</button>
       </div>
     </form>
   </transition>
@@ -79,7 +81,7 @@ export default {
         this.setIsFormValid(false);
         return;
       }
-      console.log(" Its ok", { isValid });
+
       this.setIsFormValid(true);
 
       // handle submitting

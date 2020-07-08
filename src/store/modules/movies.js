@@ -8,6 +8,13 @@ const state = {
   hasError: false,
 };
 
+const getMovieId = (movie) =>
+  movie.url.substring(movie.url.lastIndexOf("/") - 1, movie.url.length - 1);
+
+const extendMoviesWithId = (movies) => {
+  return movies.map((movie) => ({ id: getMovieId(movie), ...movie }));
+};
+
 // getters
 const getters = {
   allMovies: (state) => state.movies,
@@ -25,8 +32,9 @@ const actions = {
     try {
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: true });
       const movies = await api.getAllFilms();
+      const extendedMovies = extendMoviesWithId(movies.results);
 
-      commit(types.FETCHED_MOVIES, { movies: movies.results });
+      commit(types.FETCHED_MOVIES, { movies: extendedMovies });
       setTimeout(() => {
         commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
       }, 750);
@@ -39,8 +47,9 @@ const actions = {
     try {
       commit(types.FETCHED_MOVIES_PENDING, { isLoading: true });
       const movie = await api.getFilmById(id);
+      const extendedMovie = { ...movie, id };
 
-      commit(types.FETCHED_MOVIE, { currentMovie: movie });
+      commit(types.FETCHED_MOVIE, { currentMovie: extendedMovie });
       setTimeout(() => {
         commit(types.FETCHED_MOVIES_PENDING, { isLoading: false });
       }, 750);

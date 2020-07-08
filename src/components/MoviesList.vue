@@ -48,11 +48,7 @@
       </div>
     </div>
     <div v-if="isLoading" class="flex justify-center items-center">
-      <TrinityRingsSpinner
-        :animation-duration="1000"
-        :size="60"
-        :color="'#667eea'"
-      />
+      <TrinityRingsSpinner :animation-duration="1000" :size="60" :color="'#667eea'" />
     </div>
     <MovieItem
       v-else
@@ -60,7 +56,7 @@
       v-for="movie in sortedMovies"
       :movie="movie"
       :key="movie.url"
-      :index="getMovieIndex(movie)"
+      :index="movie.id"
     />
     {{ search }}
   </div>
@@ -76,26 +72,26 @@ export default {
   components: {
     MovieItem,
     Icon,
-    TrinityRingsSpinner,
+    TrinityRingsSpinner
   },
   data: function() {
     return {
       filter: "title",
-      direction: "asc",
+      direction: "asc"
     };
   },
   props: ["search"],
   computed: {
     ...mapGetters({
       movies: "allMovies",
-      isLoading: "isLoading",
+      isLoading: "isLoading"
     }),
     sortedMovies: function() {
       const filter = this.filter;
       const sortedMovies = this.getSortedMovies();
 
       return this.direction === "des" ? sortedMovies.reverse() : sortedMovies;
-    },
+    }
   },
   methods: {
     setFilter: function(name) {
@@ -122,12 +118,6 @@ export default {
         return 0;
       });
     },
-    getMovieIndex: function(movie) {
-      return movie.url.substring(
-        movie.url.lastIndexOf("/") - 1,
-        movie.url.length - 1
-      );
-    },
     sortByDate: function() {
       const filter = this.filter;
       return this.movies.sort(function(a, b) {
@@ -148,12 +138,12 @@ export default {
           break;
       }
     },
-    ...mapActions(["loadMovies"]),
+    ...mapActions(["loadMovies"])
   },
   created() {
     if (this.movies.length === 0) {
       this.$store.dispatch("loadMovies");
     }
-  },
+  }
 };
 </script>

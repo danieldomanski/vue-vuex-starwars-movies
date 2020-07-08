@@ -42,8 +42,8 @@
         v-if="movieReviews.length === 0"
         class="flex flex-col justify-center items-center bg-white shadow p-8 text-lg"
       >
-        <p>This film has no reviews yet.</p>
-        <p class="font-bold text-indigo-600">Don't be shy. Always be the bravest!</p>
+        <p class="text-gray-600">This film has no reviews yet.</p>
+        <p class="font-bold text-gray-600">Don't be shy. Always be the bravest!</p>
       </div>
       <div v-else class="bg-white p-8 shadow">
         <h3 class="text-2xl font-bold uppercase mb-8">Reviews</h3>
@@ -55,13 +55,6 @@
         />
       </div>
     </section>
-
-    <!-- <button
-      @click="toggleReviewForm"
-      class="transition duration-500 ease-in-out self-end border-2 border-indigo-600 border-solid text-indigo-600 hover:bg-indigo-500 hover:text-white py-2 px-6 font-bold uppercase mt-8 w-full h-16"
-    >
-      Add review
-    </button>-->
 
     <section class="flex flex-col justify-center items-center bg-white p-8 shadow mt-16">
       <div
@@ -112,7 +105,9 @@ export default {
       });
     },
     movieReviews: function() {
-      return this.reviews.filter(review => review.id === this.$route.params.id);
+      return this.reviews.filter(
+        review => review.movie_id === this.$route.params.id
+      );
     },
     ...mapGetters(["currentMovie", "isLoading", "hasError", "reviews"])
   },
