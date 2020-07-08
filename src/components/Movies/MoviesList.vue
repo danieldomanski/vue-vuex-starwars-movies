@@ -54,7 +54,7 @@
       </div>
     </div>
     <div v-if="isLoading" class="flex justify-center items-center">
-      <TrinityRingsSpinner :animation-duration="1000" :size="60" :color="'#667eea'" />
+      <Spinner />
     </div>
     <MovieItem
       v-else-if="sortedMovies.length !== 0"
@@ -73,17 +73,17 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import MovieItem from "./MovieItem.vue";
 import Icon from "../Common/Icon.vue";
 import Box from "../Common/Box.vue";
-import { TrinityRingsSpinner } from "epic-spinners";
-import { mapActions, mapGetters } from "vuex";
+import Spinner from "../Common/Spinner.vue";
 
 export default {
   components: {
     MovieItem,
     Icon,
-    TrinityRingsSpinner,
+    Spinner,
     Box
   },
   data: function() {

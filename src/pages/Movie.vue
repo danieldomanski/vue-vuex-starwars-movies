@@ -1,61 +1,11 @@
 <template>
   <div v-if="isLoading" class="flex justify-center items-center h-64">
-    <TrinityRingsSpinner :animation-duration="1000" :size="60" :color="'#667eea'" />
+    <Spinner />
   </div>
 
   <div class v-else>
-    <Box>
-      <div class="flex flex-col-reverse md:flex-row items-center justify-between">
-        <h1 class="text-3xl font-bold">{{ currentMovie.title }}</h1>
-        <p class="sm:text-lg">{{ formattedDate }}</p>
-      </div>
-
-      <p class="text-gray-600 mt-2">directed by {{ currentMovie.director }}</p>
-      <p class="text-gray-600 mb-8">produced by {{ currentMovie.producer }}</p>
-      <p class="md:text-lg">{{ currentMovie.opening_crawl }}</p>
-    </Box>
-
-    <Box class="flex flex-col sm:flex-row justify-around mt-8">
-      <div class="flex flex-col items-center text-lg text-purple-700">
-        <Icon icon="user" size="large" />
-        <h3 class="uppercase text-gray-700 mt-2 mb-3">Characters</h3>
-        <p class="font-bold">{{ currentMovie.characters.length }}</p>
-      </div>
-      <div class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0">
-        <Icon icon="globe" size="large" />
-        <h3 class="uppercase text-gray-700 mt-2 mb-3">Planets</h3>
-        <p class="font-bold">{{ currentMovie.planets.length }}</p>
-      </div>
-      <div class="flex flex-col items-center text-lg text-purple-700 mt-6 sm:mt-0">
-        <Icon icon="users" size="large" />
-        <h3 class="uppercase text-gray-700 mt-2 mb-3">Species</h3>
-        <p class="font-bold">{{ currentMovie.species.length }}</p>
-      </div>
-      <div class="flex flex-col items-center text-purple-700 mt-6 sm:mt-0">
-        <Icon icon="star" size="large" />
-        <h3 class="uppercase text-gray-700 mt-2 mb-3 text-lg">Starships</h3>
-        <p class="font-bold text-lg">{{ currentMovie.starships.length }}</p>
-      </div>
-    </Box>
-    <section class="mt-8">
-      <Box
-        v-if="movieReviews.length === 0"
-        class="flex flex-col justify-center items-center md:text-lg text-center"
-      >
-        <p class="text-gray-600">This film has no reviews yet.</p>
-        <p class="font-bold text-gray-600">Don't be shy. Always be the bravest!</p>
-      </Box>
-      <Box v-else class="bg-white p-8 shadow">
-        <h3 class="text-2xl font-bold uppercase mb-8">Reviews</h3>
-        <ReviewItem
-          :key="review.url"
-          v-for="(review, index) in movieReviews"
-          :review="review"
-          :withBorder="index !== movieReviews.length - 1"
-        />
-      </Box>
-    </section>
-
+    <MovieInfo :currentMovie="currentMovie" />
+    <MovieReviews :movieReviews="movieReviews" />
     <Box class="flex flex-col justify-center items-center mt-8">
       <div
         class="w-full flex justify-between items-center cursor-pointer px-2"
@@ -86,11 +36,12 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
-import { TrinityRingsSpinner } from "epic-spinners";
 import Icon from "../components/Common/Icon.vue";
-import ReviewForm from "../components/Reviews/ReviewForm.vue";
-import ReviewItem from "../components/Reviews/ReviewItem.vue";
+import Spinner from "../components/Common/Spinner.vue";
 import Box from "../components/Common/Box.vue";
+import ReviewForm from "../components/Reviews/ReviewForm.vue";
+import MovieReviews from "../components/Movies/MovieReviews.vue";
+import MovieInfo from "../components/Movies/MovieInfo.vue";
 
 export default {
   data: function() {
@@ -99,10 +50,11 @@ export default {
     };
   },
   components: {
-    TrinityRingsSpinner,
+    Spinner,
     Icon,
     ReviewForm,
-    ReviewItem,
+    MovieReviews,
+    MovieInfo,
     Box
   },
   computed: {
